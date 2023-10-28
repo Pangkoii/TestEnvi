@@ -1,13 +1,14 @@
 import express from "express";
 import { createRestaurant, deleteRestaurant, getRestaurant, getRestaurants, updateRestaurant } from "../Controllers/restaurantController.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
 const router = express.Router();
 
 //Create
-router.post("/", createRestaurant);
+router.post("/", verifyAdmin, createRestaurant);
 // update by ID
-router.put("/:id", updateRestaurant);
+router.put("/:id", verifyAdmin, updateRestaurant);
 // Delete
-router.delete("/:id", deleteRestaurant);
+router.delete("/:id", verifyAdmin, deleteRestaurant);
 //Get by ID
 router.get("/:id", getRestaurant);
 //Get All

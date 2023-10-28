@@ -3,7 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
 import restaurantsRoute from "./routes/restaurants.js";
-import roomsRoute from "./routes/rooms.js";
+import TablesRoute from "./routes/Tables.js";
 import usersRoute from "./routes/users.js";
 import cookieParser from "cookie-parser";
 
@@ -29,7 +29,7 @@ app.use(express.json())
 app.use("/auth", authRoute)
 app.use("/users", usersRoute)
 app.use("/restaurants", restaurantsRoute)
-app.use("/rooms", roomsRoute)
+app.use("/Tables", TablesRoute)
 
 app.listen(8800, () => {
     connect()
