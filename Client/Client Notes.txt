@@ -1,0 +1,56 @@
+A. Client/Queueing View
+Need: 
+[1] - Queueing UI || QueueingModule ||
+
+        Has :
+            [MIDDLE] = Fetch Queue Data (Position in Queue)
+            [BUTTON LOWER LEFT] = Open Menu (No need to allow to order ahead)
+            [LOWER RIGHT] = Restaurant Information (Click for more info? )
+            [LOWER RIGHT (UNDER RESTAURANT INFORMATION)] = Date | Time (System time or Device time? | If so, how?)
+            [MIDDLE LOWER LEFT BUTTON] = I'm Seated Button (Pop-Up -> Ask to input table#)
+            [MIDDLE LOWER RIGHT BUTTON] = Cancel (Pop-Up -> Confirmation)
+            Loading Screen UI (Not Important but eh lets put it when we can)
+
+[2] - Post Queue UI || OrderingModule ||
+        Has : 
+            [TOP LEFT] - Table Number(s) = (assigned by Receptionist, may be merged to +maxPax)
+            [TOP RIGHT] - Restaurant Information = (May be Logo etc. )
+            [MIDDLE] - orderList (
+                Has: 
+                Order Information  [Tabled Format Left to Right]
+                    > itemQuantity
+                    > itemName
+                    > ItemStatus [Preparing | To be Served | Served ] --Use Icons/Gifs
+                Note: Use tableNumber field for orders (OrderList will be in respect to tableNumber)
+                )
+                
+            [BUTTON LOWER RIGHT ] - BILL OUT || PointOfSaleModule
+                > Needs Confirmation 
+                > upon confirming, it should generate a new record which has the orderList for specific tableNumber 
+                > This will be used for report Generation
+
+            [BUTTON LOWER MIDDLE] - Menu/OrderAgain (Allows User to Order Again) || OrderingModule 
+            [LOWER LEFT] = Running Bill (SubTotal) || PointOfSale 
+
+Inventory Management System = Will most likely be a No Go.
+Budget Tracking Module = What the fuck does this even mean?
+
+B. Receptionist View
+C. Waiter View
+D. Admin Panel
+E. Ordering View [List Format]
+    Has :
+        if justViewing:
+            [TOP LEFT] back Button = (Go back to queueing Page)
+        Per Item:
+            [LEFT] itemPhoto = Picture nung item duh
+            [TOP RIGHT] Price = ???
+            [LOWER RIGHT] Order Now? Make an Order? Order? Add to cart? = Press to go into a separate page to make an order
+            [TOP MIDDLE] itemName = ???
+        Docked, Bottom Most part of screen:
+            [BUTTON] Confirm = Go to confirmation screen
+        Confirmation Screen:
+            Same as ${Per Item} BUT
+            [LOWER RIGHT] instead of Order now(?) has + and - buttons to add/remove item from list. (Needs Confirmation || Displays itemQuantity)
+            
+        (to consider: price range filter || most probably no)
