@@ -36,21 +36,30 @@ Inventory Management System = Will most likely be a No Go.
 Budget Tracking Module = What the fuck does this even mean?
 
 B. Receptionist View
+
 C. Waiter View
+
 D. Admin Panel
+
 E. Ordering View [List Format]
     Has :
-        if justViewing:
+
+        [1] - MENU - 
+            if justViewing:
             [TOP LEFT] back Button = (Go back to queueing Page)
-        Per Item:
-            [LEFT] itemPhoto = Picture nung item duh
-            [TOP RIGHT] Price = ???
-            [LOWER RIGHT] Order Now? Make an Order? Order? Add to cart? = Press to go into a separate page to make an order
-            [TOP MIDDLE] itemName = ???
-        Docked, Bottom Most part of screen:
-            [BUTTON] Confirm = Go to confirmation screen
-        Confirmation Screen:
-            Same as ${Per Item} BUT
-            [LOWER RIGHT] instead of Order now(?) has + and - buttons to add/remove item from list. (Needs Confirmation || Displays itemQuantity)
+
+        [2] - MENU -
+            Per Item:
+                [LEFT] itemPhoto = Picture nung item duh
+                [TOP RIGHT] Price = ???
+                [LOWER RIGHT] Order Now? Make an Order? Order? Add to cart? = Press to go into a separate page to make an order
+                [TOP MIDDLE] itemName = ???
+
+            Docked, Bottom Most part of screen:
+                [BUTTON] Confirm = Go to confirmation screen
+
+            Confirmation Screen:
+                Same as ${Per Item} BUT
+                [LOWER RIGHT] instead of Order now(?) has + and - buttons to add/remove item from list. (Needs Confirmation || Displays itemQuantity)
             
         (to consider: price range filter || most probably no)
