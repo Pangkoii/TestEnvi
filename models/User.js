@@ -3,6 +3,12 @@ import mongoose from 'mongoose';
 const { schema } = mongoose;
 
 const EmployeeSchema = new mongoose.Schema({
+
+        restaurant: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant',
+        },
+
         username:{
             type: String,
             required:true,
@@ -21,10 +27,15 @@ const EmployeeSchema = new mongoose.Schema({
             type: String,
             required:true
         },
-        isAdmin:
+
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        },
+        role:
         {
-        type: Boolean,
-        default: false
+        type: String,
+        enum:['Kitchen', 'Manager', 'Receptionist', 'Waiter']
         },
     }, {timestamps:true}
     );

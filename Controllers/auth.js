@@ -31,7 +31,7 @@ export const login = async (req, res, next) => {
             if (!isPasswordCorrect) return next(createError(400,"Incorrect Password"));
 
         //jwt.sign is from jsonwebtoken library || uses the payload of the JWT (id , isAdmin)
-            const token = jwt.sign({id:user._id, isAdmin: user.isAdmin}, process.env.JWT)
+            const token = jwt.sign({id:user._id, role: user.role, admin:user.isAdmin}, process.env.JWT)
 
         // breaks down the user._doc object to exclude specified information information. Only assigning the remaining things into otherDetails instead.
         // Which is then the one returned for the result.

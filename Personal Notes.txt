@@ -1,0 +1,35 @@
+You can /:id/:restaurantid to manage tables with respect to the restaurant id
+
+the plan is :
+
+    upon registration of Restaurant: 
+    
+    create a new collection of tables for them.
+    E.G. Restaurant_Name will create Tables_Restaurant_Name collection containing 
+    the data from the request body by the created restaurant.
+
+
+Restaurant Creation Scheme: 
+
+const registerRestaurant = async (restaurantData) => {
+  try {
+    // Create a new "Tables" collection with a unique name
+    const tablesCollectionName = `Tables_${restaurantData.id}`; // Use a naming convention
+    // Create a new Tables model based on the collection name
+
+    const newRestaurant = new Restaurant({
+      name: restaurantData.name,
+      // other restaurant information
+      tablesCollection: tablesCollectionName, // Reference to the Tables collection
+    });
+
+    const newTables = new Tables({ name: tablesCollectionName, tables: [] });
+
+    // Save both the restaurant and the tables
+    await newRestaurant.save();
+    await newTables.save();
+
+  Make custom webhook
+
+
+  localhost:8800/qr/652e409cfa3fb596510b429a

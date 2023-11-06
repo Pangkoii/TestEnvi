@@ -4,18 +4,8 @@ import restaurant from "../models/Restaurant.js"
 export const createTable = async (req,res,next) => {
     const restaurantid = req.params.restaurantid;
     const newTable = new Table(req.body)
-
-
     try{
         const savedTable = await newTable.save();
-        try{
-            await restaurant.findByIdAndUpdate(restaurantid, {
-                $push : {
-                    rooms: savedTable._id },
-                });
-        } catch (err) {
-            next(err);
-        }
         res.status(200).json(savedTable)
     } catch (err) {
         next(err);

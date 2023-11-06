@@ -6,11 +6,11 @@ const router = express.Router();
 //Create
 router.post("/", verifyAdmin, createRestaurant);
 // update by ID
-router.put("/:id", verifyAdmin, updateRestaurant);
+router.put("/:restaurantid", verifyAdmin, updateRestaurant);
 // Delete
-router.delete("/:id", verifyAdmin, deleteRestaurant);
+router.delete("/:restaurantid", verifyAdmin, deleteRestaurant);
 //Get by ID
-router.get("/:id", getRestaurant);
+router.get("/:restaurantid", getRestaurant);
 //Get All
 router.get("/", getRestaurants);
 

@@ -6,6 +6,7 @@ import restaurantsRoute from "./routes/restaurants.js";
 import TablesRoute from "./routes/Tables.js";
 import usersRoute from "./routes/users.js";
 import cookieParser from "cookie-parser";
+import QREntryPointRoute from "./routes/QREntry.js"
 
 dotenv.config();
 const app = express();
@@ -26,6 +27,7 @@ mongoose.connection.on("disconnected", () =>{
 // middlewares
 app.use(cookieParser())
 app.use(express.json())
+app.use("/qr", QREntryPointRoute)
 app.use("/auth", authRoute)
 app.use("/users", usersRoute)
 app.use("/restaurants", restaurantsRoute)
