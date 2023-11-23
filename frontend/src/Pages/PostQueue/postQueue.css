@@ -1,0 +1,67 @@
+/* Apply these styles to the centerContainer class */
+.centerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    text-align: center;
+  }
+
+  h2 {
+    text-align:center;
+    justify-content: center;
+  }
+  
+  /* Apply these styles to the dataTable class */
+  .dataTable {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  
+  .dataTable th, .dataTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .dataTable th {
+    background-color: #f2f2f2;
+  }
+  
+  .dataTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .dataTable tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  
+  .dataTable th, .dataTable td {
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .dataTable tr:hover {
+    background-color: #e0e0e0;
+  }
+  .lowerTable {
+    display: inline-block;
+    flex-direction: row;
+    
+  }
+  .OrderAgain {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    flex-direction: row; 
+    align-items: left;
+    align-content: left;
+    margin-right: 5%;
+    font-size: medium;
+  }
+
+  .OrderAgain:hover {
+    background-color: red;
+  }

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import axios from "axios"
 
+
+//const {data, loading, error } = useFetch("hotels/countByCity?cities=berlin,madrid,london")
 
 const useFetch = (url) => {
     
@@ -11,7 +14,7 @@ const useFetch = (url) => {
         const fetchData = async() => {
             setLoading(true)
             try{
-                const res = axios.get(url)
+                const res = await axios.get(url)
                 setData(res.data);
             } catch(err) {
                 setError(err);
@@ -24,11 +27,15 @@ const useFetch = (url) => {
     const reFetch = async () => {
         setLoading(true);
         try{
-            const res = axios.get(url);
+            const res = await axios.get(url);
             setData(res.data);
         } catch (err) {
             setError(err);
         }
         setLoading(false)
     };
+    return { data, loading, error, reFetch };
+
 };
+
+export default useFetch;

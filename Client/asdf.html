@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Firecamp Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://wallpapercave.com/wp/BxRXT1T.jpg'); /* Replace 'log_cabin.jpg' with your image path */
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            margin: 0;
+            color: #7a7676;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-row label {
+            width: 45%;
+        }
+
+        .form-row input,
+        .form-row textarea,
+        .form-row select {
+            width: 50%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .form-row textarea {
+            height: 60px;
+        }
+
+        .form-row-checkbox {
+            margin-bottom: 15px;
+        }
+
+        .form-row-checkbox label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-row-checkbox input {
+            margin-right: 5px;
+        }
+
+        .form-footer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="step1">
+        <h2>Personal Information</h2>
+        <div class="form-row">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" disabled>
+        </div>
+        <div class="form-row">
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="birthday" onchange="calculateAge()">
+        </div>
+        <div class="form-row">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address"></textarea>
+        </div>
+        <div class="form-row">
+            <label for="contactNo">Contact No:</label>
+            <input type="text" id="contactNo" name="contactNo">
+        </div>
+        <div class="form-footer">
+            <button onclick="showStep(2)">Next</button>
+        </div>
+    </div>
+
+    <div class="form-container" id="step2" style="display: none;">
+        <h2>Step 2</h2>
+        <div class="form-row">
+            <label for="lmp">LMP:</label>
+            <input type="text" id="lmp" name="lmp">
+        </div>
+        <div class="form-row">
+            <label for="ldc">LDC:</label>
+            <input type="text" id="ldc" name="ldc">
+        </div>
+        <div class="form-row">
+            <label for="aog">AOG:</label>
+            <input type="text" id="aog" name="aog">
+        </div>
+        <div class="form-row">
+            <label for="gp">GP:</label>
+            <input type="text" id="gp" name="gp">
+        </div>
+        <div class="form-footer">
+            <button onclick="showStep(3)">Next</button>
+        </div>
+    </div>
+
+    <div class="form-container" id="step3" style="display: none;">
+        <h2>Disease Checklist</h2>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="familyHistory" name="familyHistory">
+            <label for="familyHistory">Family History of Diabetes</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="gdmHistory" name="gdmHistory">
+            <label for="gdmHistory">History of GDM</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="macrosomicBabyHistory" name="macrosomicBabyHistory">
+            <label for="macrosomicBabyHistory">History of Macrosomic Baby</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="ageMoreThan25" name="ageMoreThan25">
+            <label for="ageMoreThan25">Age of more than 25 years old</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="pcosDiagnosis" name="pcosDiagnosis">
+            <label for="pcosDiagnosis">Diagnosis of polycystic ovarian syndrome (PCOS)</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="overweightObese" name="overweightObese">
+            <label for="overweightObese">Overweight or Obese currently and/or Prior to pregnancy</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="polyhydramnios" name="polyhydramnios">
+            <label for="polyhydramnios">Suspected polyhydramnios</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="macrosomia" name="macrosomia">
+            <label for="macrosomia">Suspected macrosomia</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="glucoseInUrine" name="glucoseInUrine">
+            <label for="glucoseInUrine">Glucose in the Urine</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="drugsIntake" name="drugsIntake">
+            <label for="drugsIntake">Intake of drugs that may increase blood sugar (Pills, Steroids, Barbiturates, Thiazide Diuretics)</label>
+        </div>
+        <p>If Any of the factors above is present, the pregnancy is considered High Risk</p>
+        <div class="form-footer">
+            <button onclick="showStep(4)">Next</button>
+        </div>
+    </div>
+
+    <div class="form-container" id="step4" style="display: none;">
+        <h2>Step 4</h2>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="highRiskOGTT" name="highRiskOGTT">
+            <label for="highRiskOGTT">High Risk for Immediate OGTT 75g</label>
+        </div>
+        <div class="form-row-checkbox">
+            <input type="checkbox" id="lowRiskOGTT" name="lowRiskOGTT">
+            <label for="lowRiskOGTT">Low risk for OGTT 75g on 24-28 weeks AOG</label>
+        </div>
+        <div class="form-row">
+            <label for="physicianName">Physician Name:</label>
+            <input type="text" id="physicianName" name="physicianName">
+        </div>
+        <div class="form-row">
+            <label for="physicianContact">Physician Contact:</label>
+            <input type="text" id="physicianContact" name="physicianContact">
+        </div>
+        <div class="form-footer">
+            <button>Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function showStep(stepNumber) {
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById('step' + i);
+                if (i === stepNumber) {
+                    step.style.display = 'block';
+                } else {
+                    step.style.display = 'none';
+                }
+            }
+        }
+
+        function calculateAge() {
+            const birthdayInput = document.getElementById('birthday');
+            const ageInput = document.getElementById('age');
+
+            const today = new Date();
+            const birthday = new Date(birthdayInput.value);
+            let age = today.getFullYear() - birthday.getFullYear();
+
+            const monthDiff = today.getMonth() - birthday.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+                age--;
+            }
+
+            ageInput.value = age;
+        }
+    </script>
+</body>
+</html>
