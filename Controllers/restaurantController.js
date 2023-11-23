@@ -13,7 +13,7 @@ export const createRestaurant = async (req, res, next) => {
 export const updateRestaurant = async (req, res, next) => {
     try {
         const updatedRestaurant = await Restaurant.findByIdAndUpdate(
-            req.params.restaurantid, 
+            { _id: req.restaurantid },
             { $set: req.body},
             { new:true}
             )
@@ -24,10 +24,10 @@ export const updateRestaurant = async (req, res, next) => {
 }
 export const deleteRestaurant = async (req, res, next) => {
     try {
-        const restaurant = await Restaurant.findById(req.params.restaurantid);
+        const restaurant = await Restaurant.findById(req.restaurantid);
         if (restaurant) {
             const deletedName = restaurant.name;
-            await restaurant.deleteOne({_id: req.params.restaurantid});
+            await restaurant.deleteOne({_id: req.restaurantid});   
             res.status(200).json(`Deleted ${deletedName} Succesfully`);
         } else {
             res.status(404).json("Unable to find Specified Restaurant");
@@ -38,7 +38,7 @@ export const deleteRestaurant = async (req, res, next) => {
 }
 export const getRestaurant = async (req, res, next) => {
     try {
-        const SearchedRestaurant = await Restaurant.findById(req.params.restaurantid);
+        const SearchedRestaurant = await Restaurant.findById(req.restaurantid);
         res.status(200).json(SearchedRestaurant);
     } catch(err) {
             next(err)

@@ -19,7 +19,7 @@ export const updateEmployee = async (req, res, next) => {
 }
 export const deleteEmployee = async (req, res, next) => {
     try {
-        const employee = await Employee.findById(req.params.id);
+        const employee = await Employee.findById(req.params.employeeid);
         if (employee) {
             const deletedName = employee.name;
             await employee.deleteOne({_id: req.params.employeeid});

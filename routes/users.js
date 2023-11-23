@@ -1,7 +1,7 @@
 import express from "express";
 import { deleteEmployee, getEmployee, getEmployees, updateEmployee } from "../Controllers/employeeController.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
-import { verifyEmployeeMembership, verifyQRToken } from "../utils/verifyOwner.js";
+import { extractID, verifyEmployeeMembership, verifyQRToken } from "../utils/verifyOwner.js";
 const router = express.Router();
 
 // router.get("/checkAuth", verifyToken, (req, res, next)=> {
@@ -15,14 +15,14 @@ const router = express.Router();
 //     res.send("u r admin xd")
 // })
 // update by ID
-router.put("/:id", verifyUser, updateEmployee);
+router.put("/:employeeid", verifyUser, updateEmployee);
 // Delete
-router.delete("/:id", verifyAdmin, deleteEmployee);
+router.delete("/:employeeid", verifyAdmin, deleteEmployee);
 //Get by ID
-router.get("/:id", verifyUser, getEmployee);
+router.get("/:employeeid", verifyAdmin, getEmployee);
 //Get All
 router.get("/", verifyAdmin, getEmployees);
 
-router.get("/employees/:employeeid", verifyQRToken, verifyEmployeeMembership, getEmployee)
+router.get("/employees/:employeeid", verifyQRToken, extractID, verifyEmployeeMembership, getEmployee)
 
 export default router

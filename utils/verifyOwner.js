@@ -12,7 +12,7 @@ export const scanQR = async (req, res, next) => {
     res.cookie('QRCookie', QRToken,{
         httpOnly: true
     });
-    res.redirect(`/restaurants/${restaurantid}`)
+    res.redirect(`/restaurants/get`)
     } catch (err) {
         next(err)
     }
@@ -65,7 +65,7 @@ export const verifyEmployeeMembership = async (req, res, next) => {
         if (!employee) {
             return next(createError(404, "Employee not Found."))
         }
-        if (employee.restaurant.toString() !== req.restaurantid.restaurantid) {
+        if (employee.restaurant.toString() !== req.restaurantid) {
             return next(createError(403, `Employee does not work at ${req.restaurantid}`))
         }
         else {
@@ -74,4 +74,13 @@ export const verifyEmployeeMembership = async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-}
+};
+
+export const extractID = (req, res, next) => {
+    const { QRCookie } = req.cookies;
+    if (QRCookie) {
+      const decoded = jwt.verify(QRCookie, process.env.QR);
+      req.restaurantid = decoded.restaurantid;
+    }
+    next();
+  };

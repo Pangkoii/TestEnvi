@@ -15,7 +15,7 @@ export const createTable = async (req,res,next) => {
 export const updateTable = async (req,res,next) => {
     try {
         const updatedTable = await Table.findByIdAndUpdate(
-            req.params.id,
+            req.params.tableid,
             {$set: req.body },
             {new: true}
         );
@@ -26,11 +26,11 @@ export const updateTable = async (req,res,next) => {
 };
 
 export const deleteTable = async (req, res, next) => {
-    const table = await Table.findById(req.params.id);
+    const table = await Table.findById(req.params.tableid);
     try { 
         if (table) {
         const deletedName = table.t_num;
-        await table.deleteOne({_id: req.params.id});
+        await table.deleteOne({_id: req.params.tableid});
         res.status(200).json(`Deleted ${deletedName} Successfully`);
         } else {
             res.status(404).json("Unable to find Specified table");
@@ -42,7 +42,7 @@ export const deleteTable = async (req, res, next) => {
 
 export const getTable = async (req, res, next) => {
     try {
-        const SearchedTable = await Table.findById(req.params.id);
+        const SearchedTable = await Table.findById(req.params.tableid);
         res.status(200).json(SearchedTable);
     } catch(err) {
         next(err)
